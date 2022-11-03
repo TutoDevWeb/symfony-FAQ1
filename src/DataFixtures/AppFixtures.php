@@ -13,8 +13,8 @@ class AppFixtures extends Fixture
 
         for ($i = 0; $i < 10; $i++) {
             $qr = new QR();
-            $qr->setQuestion = "Question numéro $i de cette Faq";
-            $qr->setReponse = "Reponse numéro $i de cette Faq";
+            $qr->setQuestion("Question numéro $i de cette Faq");
+            $qr->setReponse("Reponse numéro $i de cette Faq");
             $manager->persist($qr);
         }
 
