@@ -16,7 +16,7 @@ class FaqController extends AbstractController
 
         $QRs = $doctrine->getRepository(QR::class)->findAll();
 
-        // dd($QRs);
+        //dd($QRs);
 
         return $this->render('faq/faq.html.twig', [
             'controller_name' => 'FaqController',
