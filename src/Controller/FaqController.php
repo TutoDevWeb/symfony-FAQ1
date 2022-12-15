@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\QR;
+use App\Form\QRType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -32,11 +33,7 @@ class FaqController extends AbstractController
 
         $qr = new QR();
 
-        $form = $this->createFormBuilder($qr)
-            ->add('question', TextType::class)
-            ->add('reponse', TextType::class)
-            ->add('creerButton', SubmitType::class, ['label' => 'Créer une nouvelle entrée'])
-            ->getForm();
+        $form = $this->createForm(QRType::class, $qr);
 
         return $this->renderForm('faq/faq_new.html.twig', ['formQR' => $form]);
     }
