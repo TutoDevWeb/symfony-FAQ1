@@ -10,17 +10,22 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class FaqController extends AbstractController
 {
-    #[Route('/', name: 'app_faq')]
-    public function faq(ManagerRegistry $doctrine): Response
+    #[Route('/', name: 'faq_list')]
+    public function faq_list(ManagerRegistry $doctrine): Response
     {
 
         $QRs = $doctrine->getRepository(QR::class)->findAll();
 
         //dd($QRs);
 
-        return $this->render('faq/faq.html.twig', [
-            'controller_name' => 'FaqController',
+        return $this->render('faq/faq_list.html.twig', [
             'QRs' => $QRs
         ]);
+    }
+    #[Route('/new', name: 'faq_new')]
+    public function faq_new(ManagerRegistry $doctrine): Response
+    {
+
+        return $this->render('faq/faq_new.html.twig');
     }
 }

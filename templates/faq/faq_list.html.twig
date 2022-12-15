@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}FaqList
+{% endblock %}
+
+{% block body %}
+	<H1>Faq List</H1>
+
+	{% for QR in QRs %}
+		<p>{{ QR.question }}</p>
+		<p>{{QR.reponse}}</p>
+	{% endfor %}
+
+{% endblock %}
