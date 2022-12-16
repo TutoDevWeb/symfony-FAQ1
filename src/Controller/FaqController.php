@@ -35,6 +35,14 @@ class FaqController extends AbstractController
 
         $form = $this->createForm(QRType::class, $qr);
 
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $qr = $form->getData();
+
+            return $this->redirectToRoute('faq_list');
+        }
+
         return $this->renderForm('faq/faq_new.html.twig', ['formQR' => $form]);
     }
 }
