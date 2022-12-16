@@ -40,6 +40,10 @@ class FaqController extends AbstractController
 
             $qr = $form->getData();
 
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($qr);
+            $entityManager->flush();
+
             return $this->redirectToRoute('faq_list');
         }
 
