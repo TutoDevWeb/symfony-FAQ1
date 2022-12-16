@@ -54,6 +54,9 @@ class FaqController extends AbstractController
     public function faq_edit(Request $request, $id, ManagerRegistry $doctrine): Response
     {
         $qr = new QR();
+
+        $qr = $doctrine->getRepository(QR::class)->find($id);
+
         $form = $this->createForm(QRType::class, $qr);
 
         return $this->renderForm('faq/faq_edit.html.twig', ['formQR' => $form]);
