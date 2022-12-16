@@ -9,6 +9,10 @@
 	{% for QR in QRs %}
 		<p>{{ QR.question }}</p>
 		<p>{{QR.reponse}}</p>
+		<p>
+			<a href="{{ path('faq_edit',{ id : QR.id }) }}">Editer
+				{{ QR.id }}</a>
+		</p>
 	{% endfor %}
 
 {% endblock %}

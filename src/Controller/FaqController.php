@@ -49,4 +49,13 @@ class FaqController extends AbstractController
 
         return $this->renderForm('faq/faq_new.html.twig', ['formQR' => $form]);
     }
+
+    #[Route('/edit/{id}', name: 'faq_edit')]
+    public function faq_edit(Request $request, $id, ManagerRegistry $doctrine): Response
+    {
+        $qr = new QR();
+        $form = $this->createForm(QRType::class, $qr);
+
+        return $this->renderForm('faq/faq_edit.html.twig', ['formQR' => $form]);
+    }
 }
