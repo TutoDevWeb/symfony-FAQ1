@@ -53,12 +53,31 @@ class FaqController extends AbstractController
     #[Route('/edit/{id}', name: 'faq_edit')]
     public function faq_edit(Request $request, $id, ManagerRegistry $doctrine): Response
     {
+
         $qr = new QR();
 
+        // On charge la classe avec ce qu'il y a dans la database
         $qr = $doctrine->getRepository(QR::class)->find($id);
 
+        // On créer le formulaire en l'initialisant avec la classe chargée au dessus
         $form = $this->createForm(QRType::class, $qr);
 
-        return $this->renderForm('faq/faq_edit.html.twig', ['formQR' => $form]);
+        $form->handleRequest($request);
+
+        // Si soumission du formulaire
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // On récupère les données saisies
+            $qr = $form->getData();
+
+            $entityManager = $doctrine->getManager();
+            $entityManager->persist($qr);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('faq_list');
+        } else {
+
+            return $this->renderForm('faq/faq_edit.html.twig', ['formQR' => $form]);
+        }
     }
 }
