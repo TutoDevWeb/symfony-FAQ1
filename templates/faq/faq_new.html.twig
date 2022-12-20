@@ -6,4 +6,13 @@
 {% block body %}
 	<H1>Faq New</H1>
 
-	{{ form(formQR)}}{% endblock %}
+	{{ form_start(formQR) }}
+	{{ form_errors(formQR) }}
+
+	{{ form_row(formQR.question) }}
+	{{ form_row(formQR.reponse) }}
+	{{ form_row(formQR.submit, { 'label': 'Créer' }) }}
+
+	{{ form_end(formQR) }}
+
+{% endblock %}
