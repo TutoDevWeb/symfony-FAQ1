@@ -6,7 +6,7 @@
 {% block body %}
 	<H1>Faq Edit</H1>
 
-	{{ form_start(formQR) }}
+	{{ form_start(formQR,{'attr': {'novalidate': 'novalidate'}}) }}
 	{{ form_errors(formQR) }}
 
 	{{ form_row(formQR.question) }}

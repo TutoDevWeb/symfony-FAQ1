@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\QRRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: QRRepository::class)]
 class QR
@@ -13,9 +14,22 @@ class QR
     #[ORM\Column]
     private ?int $id = null;
 
+
+    #[Assert\Length(
+        min: 10,
+        max: 255,
+        minMessage: 'La question doit contenir au minimum {{ limit }} charactères',
+        maxMessage: 'La question doit contenir au maximum {{ limit }} charactères',
+    )]
     #[ORM\Column(length: 255)]
     private ?string $question = null;
 
+    #[Assert\Length(
+        min: 10,
+        max: 255,
+        minMessage: 'La réponse doit contenir au minimum {{ limit }} charactères',
+        maxMessage: 'La réponse doit contenir au maximum {{ limit }} charactères',
+    )]
     #[ORM\Column(length: 255)]
     private ?string $reponse = null;
 
