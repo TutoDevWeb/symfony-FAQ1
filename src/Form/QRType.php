@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\QR;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -16,6 +17,7 @@ class QRType extends AbstractType
         $builder
             ->add('question', TextType::class)
             ->add('reponse', TextType::class)
+            ->add('aRevoir', ButtonType::class)
             ->add('submit', SubmitType::class);
     }
 
