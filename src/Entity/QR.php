@@ -33,6 +33,12 @@ class QR
     #[ORM\Column(length: 255)]
     private ?string $reponse = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?bool $aRevoir = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?bool $aFaire = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -58,6 +64,30 @@ class QR
     public function setReponse(string $reponse): self
     {
         $this->reponse = $reponse;
+
+        return $this;
+    }
+
+    public function isARevoir(): ?bool
+    {
+        return $this->aRevoir;
+    }
+
+    public function setARevoir(?bool $aRevoir): self
+    {
+        $this->aRevoir = $aRevoir;
+
+        return $this;
+    }
+
+    public function isAFaire(): ?bool
+    {
+        return $this->aFaire;
+    }
+
+    public function setAFaire(bool $aFaire): self
+    {
+        $this->aFaire = $aFaire;
 
         return $this;
     }
