@@ -89,7 +89,11 @@ class FaqController extends AbstractController
 
         $qr = $doctrine->getRepository(QR::class)->findOneBy(array('aFaire' => false));
 
-        dd($qr);
+        $qr->aFaire = false;
+
+        $entityManager = $doctrine->getManager();
+        $entityManager->persist($qr);
+        $entityManager->flush();
 
         return $this->render('faq/faq_memo.html.twig', ['qr' => $qr]);
     }
