@@ -15,6 +15,8 @@ class AppFixtures extends Fixture
             $qr = new QR();
             $qr->setQuestion("Question numéro $i de cette Faq");
             $qr->setReponse("Reponse numéro $i de cette Faq");
+            $qr->setARevoir(false);
+            $qr->setAFaire(true);
             $manager->persist($qr);
         }
 
