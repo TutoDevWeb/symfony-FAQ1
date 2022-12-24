@@ -87,9 +87,10 @@ class FaqController extends AbstractController
 
         $qr = new QR();
 
-        // On charge la classe avec ce qu'il y a dans la database
-        // $qr = $doctrine->getRepository(QR::class)->find();
+        $qr = $doctrine->getRepository(QR::class)->findOneBy(array('aFaire' => false));
 
-        return $this->render('faq/faq_memo.html.twig');
+        dd($qr);
+
+        return $this->render('faq/faq_memo.html.twig', ['qr' => $qr]);
     }
 }
