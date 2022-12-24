@@ -95,6 +95,8 @@ class FaqController extends AbstractController
         $entityManager->persist($qr);
         $entityManager->flush();
 
-        return $this->render('faq/faq_memo.html.twig', ['qr' => $qr]);
+        $form = $this->createForm(QRType::class, $qr);
+
+        return $this->renderForm('faq/faq_memo.html.twig', ['qr' => $qr, 'QRform' => $form]);
     }
 }
