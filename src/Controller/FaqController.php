@@ -87,9 +87,9 @@ class FaqController extends AbstractController
 
         $qr = new QR();
 
-        $qr = $doctrine->getRepository(QR::class)->findOneBy(array('aFaire' => false));
+        $qr = $doctrine->getRepository(QR::class)->findOneBy(array('aFaire' => true));
 
-        $qr->aFaire = false;
+        $qr->setAFaire(false);
 
         $entityManager = $doctrine->getManager();
         $entityManager->persist($qr);
