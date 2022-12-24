@@ -80,4 +80,16 @@ class FaqController extends AbstractController
             return $this->renderForm('faq/faq_edit.html.twig', ['formQR' => $form]);
         }
     }
+
+    #[Route('/memo', name: 'faq_memo')]
+    public function faq_memo(Request $request, $id, ManagerRegistry $doctrine): Response
+    {
+
+        $qr = new QR();
+
+        // On charge la classe avec ce qu'il y a dans la database
+        $qr = $doctrine->getRepository(QR::class)->find($id);
+
+        return $this->render('faq/faq_memo.html.twig');
+    }
 }
